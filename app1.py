@@ -1,4 +1,3 @@
-print("Hello, AWS CodeBuild!")
+print("Hello, AWSss CodeBuild!")
 
 
-print("hi, codebuild is automated")
