@@ -1,17 +1,38 @@
+# version: 0.2
+
+# phases:
+#   install:
+#     runtime-versions:
+#       python: 3.11
+#     commands:
+#       - echo "Installing dependencies..."
+
+#   build:
+#     commands:
+#       - echo "Running Hello World App"
+#       - python app1.py
+
+# artifacts:
+#   files:
+#     - '**/*'
+
 version: 0.2
 
 phases:
   install:
     runtime-versions:
-      python: 3.11
+      python: 3.9
     commands:
-      - echo "Installing dependencies..."
+      - pip install -r requirements.txt
 
   build:
     commands:
-      - echo "Running Hello World App"
-      - python app1.py
+      - echo "Running unit tests..."
+      - mkdir -p reports
+      - pytest --junitxml=reports/results.xml
 
-artifacts:
-  files:
-    - '**/*'
+reports:
+  pytest_reports:
+    files:
+      - reports/results.xml
+    file-format: JUNITXML
